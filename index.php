@@ -1,2 +1,2 @@
 <?php
-echo "C'est fun ";
+echo "Test DB Routes";
