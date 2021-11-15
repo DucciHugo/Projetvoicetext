@@ -1,2 +1,2 @@
 <?php
-echo "C'test branche ";
+echo "test 2 ";
