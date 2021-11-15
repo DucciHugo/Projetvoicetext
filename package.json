@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon js/server.js"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,11 @@
   "bugs": {
     "url": "https://github.com/Lacasito93/Projetvoicetext/issues"
   },
-  "homepage": "https://github.com/Lacasito93/Projetvoicetext#readme"
+  "homepage": "https://github.com/Lacasito93/Projetvoicetext#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.3.2"
+  }
 }
