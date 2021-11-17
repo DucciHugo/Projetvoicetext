@@ -1,20 +1,32 @@
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+const express = require('express')
+const bodyParser = require('body-parser')
+const app = express()
 
-app.get('/', function(req, res){
-  res.sendFile('../index.html');
-});
+// ajout de socket.io
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended:true}))
+app.use(express.static('public'))
+app.get('/', function (req, res) {
+   res.sendFile('index.html', { root: __dirname })
+})
 
-io.on('connection', function(socket){
-  socket.on('up', function(msg){
-      console.log(msg);
-  });
-});
- 
-var port = process.env.PORT || 8080; 
- 
-http.listen(port, function(){
-  console.log('Serveur ouvert sur le port :' + port);
-});
+app.get('/json', function (req, res) {
+   res.status(200).json({"message":"ok"})
+})
+
+// établissement de la connexion
+io.on('connection', (socket) =>{
+  console.log(`Connecté au client ${socket.id}`)
+  // émission d'un évènement
+  socket.on('message',function(msg){
+    console.log(msg);
+  })
+})
+
+// on change app par server
+server.listen(3000, function () {
+ console.log('Votre app est disponible sur localhost:3000 !')
+})
