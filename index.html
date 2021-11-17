@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Accueil</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/static/img/ico.png">
+    <link rel="icon" href="/static/img/ico.png">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/3693fa4061.js" crossorigin="anonymous"></script>
+
+    <!-- Floating labels -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css" media="screen">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://bootswatch.com/5/cerulean/bootstrap.min.css" />
+
+    <!-- Custom styles -->
+    <link href="static/styles/styles.css" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <header>
+
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white">
+            <div class="container-fluid">
+
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="static/img/Logo.png" height="100" alt="" loading="lazy" class="img-logo" />
+                </a>
+
+                <!-- Navbar toggler-->
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarExample01">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarExample01">
+
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Accueil</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav d-flex flex-sm-column flex-md-row flex-lg-row">
+                        <li class="nav-item mx-md-1 mb-md-0 mb-1">
+                           
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+
+    </header>
+
+    <main>
+        <section class="bg-light">
+            <div id="intro" class="p-5 text-center bg-image bg-background shadow-1-strong">
+                <div class="mask mask-bgcolor">
+
+                    <div class="d-flex justify-content-center align-items-center h-100">
+                        <div class="text-white px-4">
+                            <h1 class="mb-3">Projet voice to text</h1>
+                            <h3 class="mb-3">Vos mots :</h3>
+
+                            <ul id="messages"></ul>
+                                <form id="form" action="">
+                                    <input id="input" autocomplete="off" /><button>Send</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About us-->
+        <section class="bg-light">
+            <div class="container">
+                <div class="text-center my-2">
+                    <h2 class="text-uppercase">A propos de nous</h2>
+                </div>
+                <div class="row text-center">
+                    <p>Notre équipe spécialisée dans le développement web, en étroite collaboration avec l'entreprise Exotismes, a pour projet de mettre en place un système de reconnaissance de mots clés.
+                        <br />
+                        L'ensemble des mots clés enregistrés sont disponibles sur notre page web.
+                        <br />
+                        N'hésitez pas à consulter cette page pour plus d'informations sur le projet et l'équipe technique.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services-->
+        <section class="bg-light">
+            <div class="container">
+                <div class="text-center my-2">
+                    <h2 class="text-uppercase">Notre équipe</h2>
+                </div>
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                          <img src="static/img/Alexis.png" height="130" alt="">
+                        </span>
+                        <h4 class="my-3">Alexis</h4>
+                        <p class="text-muted">Chef de projet</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <img src="static/img/Hugo.png" height="130" alt="">
+                        </span>
+                        <h4 class="my-3">Hugo</h4>
+                        <p class="text-muted">Developpeur Front</p>
+                    </div>
+                    <div class="col-md-4">
+                        <span class="fa-stack fa-4x">
+                            <img src="static/img/Marc.png" height="130" alt="">
+                        </span>
+                        <h4 class="my-3">Marc</h4>
+                        <p class="text-muted">Developpeur</p>
+                    </div>
+                    <div class="col-md-8">
+                        <span class="fa-stack fa-4x">
+                            <img src="static/img/Ben.png" height="130" alt="">
+                        </span>
+                        <h4 class="my-3">Benjamin</h4>
+                        <p class="text-muted">Developpeur back</p>
+                    </div>
+                    <div class="col-md-2">
+                        <span class="fa-stack fa-4x">
+                            <img src="static/img/Tiffany.png" height="130" alt="">
+                        </span>
+                        <h4 class="my-3">Tiffany</h4>
+                        <p class="text-muted">Designeuse</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-light my-2" id="FAQ">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="text-uppercase">FAQs</h2>
+                    <h4 class="text-muted">Besoin d'aide ? Nous sommes là pour vous aider.</h4>
+                </div>
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Quel est l'objectif ?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Notre site a été conçu avec pour objectif de fournir un site simple et épuré aux utilisateurs pour qu’ils puissent trouver ce qu’ils cherchent sans efforts considérable.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Est-ce que le site est adapté pour tout type d'appareils ?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                               Notre site est adapté a l'ensemble des appareils numérique.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Comment nous contacter ?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                Veuillez contacter notre organisme au numéro suivant : 01.84.16.20.10
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div class="container">
+        <footer class="py-3 my-4">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="index.html" class="nav-link px-2 text-muted tools">Retour en haut</a></li>
+            </ul>
+            <p class="text-center text-muted">&copy; 2021 <strong>ATHMB</strong> SARL.
+                <br />
+                <span class="footer-copyright">Tous droits réservés. Toute reproduction ou
+                    représentation intégrale ou partielle, par quelque procédé que ce soit, des pages publiées sur ce
+                    site, faite sans l’autorisation de la direction de  SARL est illicite et constitue une
+                    contrefaçon.
+                </span>
+            </p>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    
+      var messages = document.getElementById('messages');
+      var form = document.getElementById('form');
+      var input = document.getElementById('input');
+    
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (input.value) {
+          socket.emit('msg', input.value);
+          input.value = '';
+        }
+      });
+    
+      socket.on('msg', function(msg) {
+        var item = document.createElement('li');
+        item.textContent = msg;
+        messages.appendChild(item);
+        window.scrollTo(0, document.body.scrollHeight);
+      });
+    </script>
+
+</body>
+
+</html>
