@@ -58,13 +58,13 @@ io.on('connection', (socket) => {
     socket.on('msg', (msg) => {
         console.log('Mot : ' + msg);
         io.emit('msg', msg);
-          Axios.post('http://localhost:5002/insert',{
+          Axios.post('http://localhost:5000/insert',{
             mot:msg
           })
       });
   });
 
   
-server.listen(5002, () => {
-  console.log('listening on *:5002');
+server.listen(5000, () => {
+  console.log('listening on *:5000');
 });
