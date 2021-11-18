@@ -37,6 +37,11 @@
     
     <!-- Custom styles for this template -->
     <link href="static/styles/dashboard.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="static/img/ico.png">
+    <link rel="icon" href="static/img/ico.png">
+    
   </head>
   <body>
     
