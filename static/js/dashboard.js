@@ -1,10 +1,5 @@
 /* globals Chart:false, feather:false */
-
-      
-(function () {
-  'use strict'
-
-  let labels = [];
+let labels = [];
   axios.get('http://localhost:5000/week').then(({data}) =>
           data.forEach(function(item,i) {
             newd =new Date(item.date).toLocaleDateString();
@@ -13,7 +8,20 @@
         })
       
       ).catch((err) => console.log(err))
-      console.log(labels)
+      
+
+  'use strict'
+  console.log(labels)
+  let data = [];
+  axios.get('http://localhost:5000/value').then((res) =>
+            res.data.forEach(function(item,i) {
+            console.log(item.counted_leads)
+            data.push(item.counted_leads)
+
+        })
+      ).catch((err) => console.log(err))
+      console.log(data);
+
   feather.replace({ 'aria-hidden': 'true' })
 
   
@@ -24,25 +32,9 @@
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: [
-        'Sunday',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday'
-      ],
+      labels,
       datasets: [{
-        data: [
-          15339,
-          21345,
-          18483,
-          24003,
-          23489,
-          24092,
-          12034
-        ],
+        data,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
@@ -63,4 +55,4 @@
       }
     }
   })
-})()
+

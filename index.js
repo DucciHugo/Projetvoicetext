@@ -49,7 +49,12 @@ app.get('/week',(req,res)=>{
       res.send(result)
   })
 })
-
+app.get('/value',(req,res)=>{
+  const sqlSelect = "Select count(date) as counted_leads, date as date from motscles group by date";
+  db.query(sqlSelect, (err,result) =>{
+      res.send(result)
+  })
+})
 app.post("/insert",(req,res)=>{
   console.log(req.body.mot);
   const mot = req.body.mot
