@@ -68,10 +68,14 @@
                             <h1 class="mb-3">Projet voice to text</h1>
 
                             <!-- Button trigger modal -->
-         <button type="button" class="btn btn-outline-light btn-lg m-2" data-bs-toggle="modal" data-bs-target="#ModalForm">
+         <button id="btnMicro" type="button" class="btn btn-outline-light btn-lg m-2">
             <span class="left-pan"><i class="fa fa-microphone"></i></span> Cliquez ici pour commencer la reconnaissance vocale
         </button>
-        
+        <div id="charSpin" class="spinner-border" style="width: 2rem; height: 2rem;" role="status" hidden>
+            <span><i class="fa fa-microphone"></i></span>
+        </div>
+        <div id="charLabel" hidden><h5>En écoute...</h5></div>
+        <button hidden id="msgBtn" type="button" data-bs-toggle="modal" data-bs-target="#ModalForm"></button>
                     
                         </div>
                     </div>
@@ -89,7 +93,7 @@
                                 </div>
 
                                 <div class="modal-body">
-
+                                    <h5 id="message"><h4 id="motCle"></h4></h5>
                     
 
                                 </div>
@@ -235,27 +239,25 @@
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io();
-    
-      var messages = document.getElementById('messages');
-      var form = document.getElementById('form');
-      var input = document.getElementById('input');
-    
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        if (input.value) {
-          socket.emit('msg', input.value);
-          input.value = '';
-        }
+      document.getElementById('btnMicro').addEventListener('click',function(){
+            socket.emit('python','go');
+            this.setAttribute("hidden",true)  
+            document.getElementById("charSpin").removeAttribute("hidden")
+            document.getElementById("charLabel").removeAttribute("hidden")
       });
     
       socket.on('msg', function(msg) {
-        var item = document.createElement('li');
-        item.textContent = msg;
-        messages.appendChild(item);
-        window.scrollTo(0, document.body.scrollHeight);
+        console.log(msg)
+        document.getElementById('message').innerHTML=msg[0]
+        document.getElementById('motCle').innerHTML=msg[1]
+        document.getElementById('msgBtn').click()
+        document.getElementById("btnMicro").removeAttribute("hidden")
+        document.getElementById("charSpin").setAttribute("hidden",true)
+        document.getElementById("charLabel").setAttribute("hidden",true)
       });
     </script>
 
+    <script src="/vosk/micro.py"></script>
 </body>
 
 </html>

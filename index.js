@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors')
 const mysql = require('mysql')
 const Axios = require("axios")
+const { spawn } = require('child_process');
 
 // const db = mysql.createPool({
 //   host:"localhost",
@@ -17,8 +18,8 @@ const Axios = require("axios")
 // })
 const db = mysql.createPool({
   host:"localhost",
-  user:"root",
-  password:"",
+  user:"admin",
+  password:"admin",
   database:"dbvoice",
 })
 app.use(express.static(__dirname));
@@ -62,6 +63,23 @@ io.on('connection', (socket) => {
             mot:msg
           })
       });
+    socket.on('python',(data) => {
+         console.log("Chargement du script python pour "+socket.id)
+         const py = spawn('python3',['vosk/micro.py'])
+         py.stdout.on('data',(data)=>{
+            console.log(data.toString())
+            data=data.toString();
+            data=data.split(',');
+            //var firstIndex = data.indexOf("$");
+            //var lastIndex = data.lastIndexOf("$");
+            //var msg = String(data).substr(firstIndex+1, lastIndex-firstIndex-1);
+            io.emit('msg',data);
+         })
+         py.stderr.on('data',(data)=>{
+            console.error(`stderr: ${data}`);
+           // io.emit('msg',data);
+         })
+     });
   });
 
   

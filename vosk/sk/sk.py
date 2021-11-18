@@ -1,31 +1,26 @@
-import asyncio
 import socketio
 
-sio = socketio.AsyncClient()
+sio = socketio.Client()
 
 @sio.event
-async def connect():
-    print('connection established')
+def connect():
+    print('Connexion au serveur etablie !')
 
 @sio.event
-async def my_message(data):
+def my_message(data):
     print('message received with ', data)
+    sio.emit('my response', {'response': 'my response'})
 
 @sio.event
-async def disconnect():
-    print('disconnected from server')
+def disconnect():
+    print('Deconnecter du serveur')
 
+def envoie(data):
+   sio.emit('msg',data)
 
-async def envoie(data):
-    await sio.emit('msg',data)
+def connexion():
+   sio.connect('http://localhost:5000')
 
-async def main():
-    await sio.connect('http://localhost:5000')
-    await sio.wait()
+def deconnexion():
+   sio.disconnect()
 
-def run():
-   asyncio.run(main())
-
-
-run()
-envoie("coucou")
