@@ -50,38 +50,37 @@ app.post("/insert",(req,res)=>{
 
 })
 
-io.on('connection', (socket) => {
-    console.log('a user connected');
+io.sockets.on('connection', (socket) => {
+    console.log('Utilisateur '+socket.id+' connecté');
     socket.on('disconnect', () => {
-      console.log('user disconnected');
+      console.log('Utilisateur '+socket.id+' deconnecté');
     });
 
-    socket.on('msg', (msg) => {
+    socket.on('msg-'+socket.id, (msg) => {
         console.log('Mot : ' + msg);
-        io.emit('msg', msg);
+        io.emit('msg-'+socket.id, msg);
           Axios.post('http://localhost:5000/insert',{
             mot:msg
           })
       });
-    socket.on('python',(data) => {
+    socket.on('python-'+socket.id,(data) => {
          console.log("Chargement du script python pour "+socket.id)
          const py = spawn('python3',['vosk/micro.py'])
          py.stdout.on('data',(data)=>{
             console.log(data.toString())
             data=data.toString();
             data=data.split(',');
-            //var firstIndex = data.indexOf("$");
-            //var lastIndex = data.lastIndexOf("$");
-            //var msg = String(data).substr(firstIndex+1, lastIndex-firstIndex-1);
-            io.emit('msg',data);
+            io.emit('msg-'+socket.id,data);
             Axios.post('http://localhost:5000/insert',{
               mot:data[1]
             })
-            
          })
          py.stderr.on('data',(data)=>{
             console.error(`stderr: ${data}`);
-           // io.emit('msg',data);
+
+            if(data.toString().includes("PortAudioError")){
+             io.emit('msg-'+socket.id,["Erreur du micro, veullez réessayer : ","Vérifier le branchement du micro"]);
+           }
          })
      });
   });

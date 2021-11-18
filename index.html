@@ -238,23 +238,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      var socket = io();
-      document.getElementById('btnMicro').addEventListener('click',function(){
-            socket.emit('python','go');
-            this.setAttribute("hidden",true)  
-            document.getElementById("charSpin").removeAttribute("hidden")
-            document.getElementById("charLabel").removeAttribute("hidden")
-      });
-    
-      socket.on('msg', function(msg) {
+var socket = io();
+spin=document.getElementById("charSpin");
+spinLabel=document.getElementById("charLabel");
+message=document.getElementById('message')
+motCle=document.getElementById('motCle');
+msgBtn=document.getElementById('msgBtn');
+btnMicro=document.getElementById("btnMicro");
+socket.on('connect',function(){
+    const id = socket.io.engine.id;
+    console.log('Mon id : '+id)
+    document.getElementById('btnMicro').addEventListener('click',function(){
+        socket.emit('python-'+socket.id,'go');
+        this.setAttribute("hidden",true)
+        spin.removeAttribute("hidden")
+        spinLabel.removeAttribute("hidden")
+    });
+    socket.on('msg-'+socket.id, function(msg) {
         console.log(msg)
-        document.getElementById('message').innerHTML=msg[0]
-        document.getElementById('motCle').innerHTML=msg[1]
-        document.getElementById('msgBtn').click()
-        document.getElementById("btnMicro").removeAttribute("hidden")
-        document.getElementById("charSpin").setAttribute("hidden",true)
-        document.getElementById("charLabel").setAttribute("hidden",true)
-      });
+        message.innerHTML=msg[0]
+        motCle.innerHTML=msg[1]
+        msgBtn.click()
+        btnMicro.removeAttribute("hidden");
+        spin.setAttribute("hidden",true);
+        spinLabel.setAttribute("hidden",true);
+    })
+})
     </script>
 
     <script src="/vosk/micro.py"></script>
