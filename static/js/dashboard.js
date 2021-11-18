@@ -1,5 +1,9 @@
 /* globals Chart:false, feather:false */
-
+axios.get('http://localhost:5000/week').then(({data}) =>
+          console.log(data)
+      
+      ).catch((err) => console.log(err))
+      
 (function () {
   'use strict'
 
