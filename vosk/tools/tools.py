@@ -1,5 +1,5 @@
-lettre=['un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize'
-,'quatorze','quinze','seize','vingt','trente','quarante','cinquante','soixante','cent','mille']
+lettre=['mille','cent','soixante','cinquante','quarante','trente','vingt','seize','quinze','quatorze','treize','douze','onze'
+,'dix','neuf','huit','sept','six','cinq','quatre','trois','deux','un']
 
 chiffre=['0','1','2','3','4','5','6','7','8','9']
 
