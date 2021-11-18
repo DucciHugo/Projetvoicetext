@@ -12,8 +12,8 @@ const moment = require('moment');
 
 const db = mysql.createPool({
   host:"localhost",
-  user:"admin",
-  password:"admin",
+  user:"root",
+  password:"",
   database:"dbvoice",
 })
 
@@ -44,7 +44,6 @@ app.get('/count', (req,res) =>{
 })
 
 app.get('/week',(req,res)=>{
-  const options = {year: 'numeric', month: 'long', day: 'numeric' };
   const sqlSelect = "SELECT DISTINCT date FROM motscles WHERE date > (NOW() - INTERVAL 1 WEEK)";
   db.query(sqlSelect, (err,result) =>{
       res.send(result)
@@ -53,7 +52,6 @@ app.get('/week',(req,res)=>{
 
 app.post("/insert",(req,res)=>{
   console.log(req.body.mot);
-
   const mot = req.body.mot
   const sqlInsert = "INSERT INTO motscles (mot) VALUES (?)";
   db.query(sqlInsert, [mot], (err,result) =>{
@@ -64,8 +62,6 @@ app.post("/insert",(req,res)=>{
   })
   res.send("finished");
 })
-
-
 
 io.sockets.on('connection', (socket) => {
     console.log('Utilisateur '+socket.id+' connecté');

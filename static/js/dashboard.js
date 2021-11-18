@@ -1,13 +1,22 @@
 /* globals Chart:false, feather:false */
-axios.get('http://localhost:5000/week').then(({data}) =>
-          console.log(data)
-      
-      ).catch((err) => console.log(err))
+
       
 (function () {
   'use strict'
 
+  let labels = [];
+  axios.get('http://localhost:5000/week').then(({data}) =>
+          data.forEach(function(item,i) {
+            newd =new Date(item.date).toLocaleDateString();
+            labels.push(newd)
+
+        })
+      
+      ).catch((err) => console.log(err))
+      console.log(labels)
   feather.replace({ 'aria-hidden': 'true' })
+
+  
 
   // Graphs
   var ctx = document.getElementById('myChart')
