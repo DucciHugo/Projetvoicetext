@@ -2,7 +2,7 @@ from tools import tools as t
 
 class Route():
 
-    mois=" "
+    mois=""
     nb=" "
     jour=" "
     dest=" "
@@ -14,6 +14,7 @@ class Route():
        self.jour=" "
        self.nb= " "
        self.jour=" "
+       self.mois="0"
        self.enfant="0"
        self.bebe="0"
        self.adulte="0"
@@ -25,7 +26,7 @@ class Route():
             if i in text:
                 self.jour=self.jour+" "+i
             
-        if self.mois !="":
+        if self.mois !="0":
            return True
         return False
 
@@ -47,7 +48,6 @@ class Route():
         return False
     def traitDevis(self,lettre,text):
           for i in lettre:
-             print(i)
              if ((i in text)and("adulte" in text)and(self.adulte=="0")):
                   self.adulte=i
              elif ((i in text)and("enfant" in text)and(self.enfant=="0")and(self.adulte!="0")):
@@ -79,7 +79,7 @@ class Route():
             return "J'ai compris que vous voulez une ,contre-proposition"
         elif "proposition" in text:
             return "J'ai compris que vous voulez une ,contre-proposition"
-        elif (True if self.traitMois(t.mois,t.lettre,text)==True else False) and ("adulte" not in text) or ("enfant" not in text) or ("bébé" not in text):
+        elif (True if self.traitMois(t.mois,t.lettre,text) else False) and (("adulte" not in text) or ("enfant" not in text) or ("bébé" not in text)):
              return "J'ai compris que vous voulez partir le ,"+self.jour+" "+self.mois
         elif (True if self.traitDest(t.destination,text)==True else False):
             if self.dest=="séchelles":
