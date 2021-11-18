@@ -74,6 +74,10 @@ io.on('connection', (socket) => {
             //var lastIndex = data.lastIndexOf("$");
             //var msg = String(data).substr(firstIndex+1, lastIndex-firstIndex-1);
             io.emit('msg',data);
+            Axios.post('http://localhost:5000/insert',{
+              mot:data[1]
+            })
+            
          })
          py.stderr.on('data',(data)=>{
             console.error(`stderr: ${data}`);
