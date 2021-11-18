@@ -5,7 +5,8 @@ import sounddevice as sd
 import vosk
 import sys
 import json
-from route import route as tr
+from tools import route as tr
+
 
 q = queue.Queue()
 
@@ -75,12 +76,14 @@ def recoGo():
             rec = vosk.KaldiRecognizer(model, args.samplerate)
             sor = True
             while sor == True:
+                route = tr.Route()
                 data = q.get()
                 if rec.AcceptWaveform(data):
                     res = json.loads(rec.FinalResult())
                     text = res["text"]
-                    text=tr.transcription(text)
+                    text=route.transcription(text)
                     print(text)
+                    route=None
                     sor = False
                 if dump_fn is not None:
                         dump_fn.write(data)
