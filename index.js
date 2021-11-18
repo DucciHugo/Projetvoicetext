@@ -8,7 +8,7 @@ const cors = require('cors')
 const mysql = require('mysql')
 const Axios = require("axios")
 const { spawn } = require('child_process');
-const moment = require(moment);
+const moment = require('moment');
 
 const db = mysql.createPool({
   host:"localhost",
