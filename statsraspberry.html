@@ -131,9 +131,8 @@
       })
      document.querySelector('html').addEventListener('mousedown',function(){
         socket.emit('cpu','go')
-        console.log('cpu')
      })
-     socket.on('msg-'+id,function(msg){
+     socket.on('cpu',function(msg){
           console.log(msg)
       })
   })

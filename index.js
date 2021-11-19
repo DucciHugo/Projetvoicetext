@@ -104,7 +104,8 @@ io.sockets.on('connection', (socket) => {
       const py = spawn('python3',['cpu.py'])
       py.stdout.on('data',(data)=>{
         console.log(data.toString())
-        io.emit(data.toString())
+        data=data.toString().split(',');
+        io.emit('cpu',data)
       })
      })
   });
