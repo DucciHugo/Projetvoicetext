@@ -11,8 +11,8 @@ const { spawn } = require('child_process');
 
 const db = mysql.createPool({
   host:"localhost",
-  user:"root",
-  password:"",
+  user:"admin",
+  password:"admin",
   database:"dbvoice",
 })
 

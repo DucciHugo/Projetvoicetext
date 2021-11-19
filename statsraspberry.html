@@ -119,6 +119,7 @@
   socket.on('connect',function(){
       const id = socket.io.engine.id;
       console.log('Mon id : '+id)
+      socket.emit('cpu-'+id)
       
       socket.on('cpu-'+id, function(data) {
           console.log(data)
