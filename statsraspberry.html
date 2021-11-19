@@ -154,7 +154,7 @@
 
     cpuaff.innerHTML ="<h6>Le taux d'utilisation du cpu est de " + cpu[8].slice(0,4) + "%</h6>"
     tempaff.innerHTML ="<h6>La température du cpu est de " + cpu[0].slice(0,4) + "°</h6>"
-    ramaff.innerHTML ="<h6>L'espace total disponible est de " + (parseInt(cpu[1])/1000) + "</h6>" +"<h6>L'espace utilisé de la ram est de " + cpu[2].slice(0,4) + "</h6>" + "<h6>L'espace restant disponible est de " + cpu[1].slice(0,4) + "</h6>"
+    ramaff.innerHTML ="<h6>L'espace total disponible est de " + (parseInt(cpu[1])/1000*1000) + "</h6>" +"<h6>L'espace utilisé de la ram est de " + cpu[2].slice(0,4) + "</h6>" + "<h6>L'espace restant disponible est de " + cpu[1].slice(0,4) + "</h6>"
     stoaff.innerHTML ="<h6>L'espace total disponible est de " + cpu[4] + "o</h6>" + "<h6>L'espace utilisé est de " + cpu[5] + "o</h6>"+ "<h6>L'espace restant est de " + cpu[6] + "o</h6>"
 
 
