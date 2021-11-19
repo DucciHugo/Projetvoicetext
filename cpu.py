@@ -1,4 +1,3 @@
-from future import print_function
 import psutil
 import time
 import socketio
