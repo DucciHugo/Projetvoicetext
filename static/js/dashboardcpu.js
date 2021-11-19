@@ -43,12 +43,13 @@ function cpustats(cpu){
           })
         
     }
-    console.log(myChart.config.data.datasets.push([{
+    myChart.config.data.datasets.push([{
         data,
         lineTension: 0,
         backgroundColor: 'transparent',
         borderColor: '#007bff',
         borderWidth: 4,
         pointBackgroundColor: '#007bff'
-      }]))
+      }])
+      myChart.update();
   }
