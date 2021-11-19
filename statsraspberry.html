@@ -138,6 +138,8 @@
 
       <script src="/socket.io/socket.io.js"></script>
       <script>
+        var data = []
+        var myChart = null
   var socket = io();    
   socket.on('connect',function(){
       const id = socket.io.engine.id;
@@ -149,12 +151,6 @@
         socket.emit('cpu','go')
      })
      socket.on('cpu',function(cpu){
-          cpustats(cpu);
-
-          var data = []
-        var myChart = null
-
-function cpustats(cpu){
     console.log(cpu)
     'use strict'
     cpures = cpu[8].slice(0,3)
@@ -197,7 +193,7 @@ function cpustats(cpu){
           })
         
     }
-    myChart.config.data.datasets.push([{
+    else{    myChart.config.data.datasets.push([{
         data,
         lineTension: 0,
         backgroundColor: 'transparent',
@@ -205,8 +201,8 @@ function cpustats(cpu){
         borderWidth: 4,
         pointBackgroundColor: '#007bff'
       }])
-      myChart.update();
-  }
+      myChart.update();}
+  
       })
   })
 
