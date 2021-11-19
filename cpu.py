@@ -22,7 +22,7 @@ def send_infos():
     global start_timer
     start_timer = time.time()
     memory = raspberry_usage()
-    sio.emit('system_usage-'+sio.io.engine.id,{
+    sio.emit('system_usage-'+sio.id,{
       'memoryUsed' :  memory[0],
       'memoryFree' :  memory[1],
       'cpuUsed' :  memory[2]
