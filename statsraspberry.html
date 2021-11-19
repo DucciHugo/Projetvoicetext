@@ -95,7 +95,7 @@
                       <div class="card">
                           <div class="card-body">
                           <h5>Température</h5>
-                          <li id="tempaff"></li>
+                          <p id="tempaff"></p>
 
                           </div>
                       </div>
@@ -104,7 +104,7 @@
                         <div class="card">
                             <div class="card-body">
                             <h5>Taux d'utilisation de la RAM</h5>
-                            <li id="ramaff"></li>
+                            <p id="ramaff"></p>
                             </div>
                         </div>
                     </div>
@@ -112,6 +112,8 @@
                       <div class="card">
                           <div class="card-body">
                           <h5>Stockage</h5>
+                          <p id="stoaff"></p>
+
                           </div>
                       </div>
                   </div>
@@ -148,7 +150,13 @@
     var cpuaff = document.getElementById('cpuaff')
     var ramaff = document.getElementById('ramaff')
     var tempaff = document.getElementById('tempaff')
-    cpuaff.innerHTML ="<h6>Le taux d'utilisation du cpu est de " + cpu[8].slice(0,3) + "%</h6>"
+    var stopaff = document.getElementById('stopaff')
+
+    cpuaff.innerHTML ="<h6>Le taux d'utilisation du cpu est de " + cpu[8].slice(0,4) + "%</h6>"
+    tempaff.innerHTML ="<h6>La température du cpu est de " + cpu[0].slice(0,4) + "°</h6>"
+    ramaff.innerHTML ="<h6>L'espace total disponible est de " + cpu[1].slice(0,4) + "</h6>" +"<h6>L'espace utilisé de la ram est de " + cpu[2].slice(0,4) + "</h6>" + "<h6>L'espace restant disponible est de " + cpu[1].slice(0,4) + "</h6>"
+    stoaff.innerHTML ="<h6>L'espace total disponible est de " + cpu[4] + "G</h6>" + "<h6>L'espace utilisé est de " + cpu[5] + "G</h6>"+ "<h6>L'espace restant est de " + cpu[6] + "G</h6>"
+
 
       })
   })
