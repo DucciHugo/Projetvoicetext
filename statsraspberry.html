@@ -85,8 +85,9 @@
                     <div class="col-sm-4 mb-2">
                         <div class="card">
                             <div class="card-body">
+
                                 <h5>Taux d'utilisation du CPU</h5>
-                                <h6 id=""></h6>
+                                <canvas class="my-4 w-100" id="cpu" width="900" height="380"></canvas>
                             </div>
                         </div>
                     </div>
@@ -94,6 +95,8 @@
                       <div class="card">
                           <div class="card-body">
                           <h5>Température</h5>
+                          <canvas class="my-4 w-100" id="temp" width="900" height="380"></canvas>
+
                           </div>
                       </div>
                   </div>
@@ -101,6 +104,8 @@
                         <div class="card">
                             <div class="card-body">
                             <h5>Taux d'utilisation de la RAM</h5>
+                            <canvas class="my-4 w-100" id="ram" width="900" height="380"></canvas>
+
                             </div>
                         </div>
                     </div>
@@ -127,6 +132,10 @@
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
       <script src="static/js/dashboard.js"></script> 
+      <script src="static/js/dashboardcpu.js"></script> 
+      <script src="static/js/dashboardtemp.js"></script> 
+      <script src="static/js/dashboardram.js"></script> 
+
       <script src="/socket.io/socket.io.js"></script>
       <script>
   var socket = io();    
@@ -140,7 +149,7 @@
         socket.emit('cpu','go')
      })
      socket.on('cpu',function(cpu){
-          console.log(cpu)
+          cpustats(cpu);
       })
   })
 
