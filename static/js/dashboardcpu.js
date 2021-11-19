@@ -1,7 +1,8 @@
+var data = []
+
 function cpustats(cpu){
     console.log(cpu)
     'use strict'
-    let data = []
     var myChart
     cpures = cpu[8].slice(0,3)
 
@@ -17,7 +18,7 @@ function cpustats(cpu){
             type: 'line',
             data: {
               labels: [
-                ' ',
+                'test',
               ],
               datasets: [{
                 data,
