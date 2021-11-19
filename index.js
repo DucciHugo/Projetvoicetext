@@ -98,6 +98,10 @@ io.sockets.on('connection', (socket) => {
            }
          })
      });
+
+     socket.on('system_usage-'+socket.id,(data) =>{
+       console.log(data);
+     })
   });
 
   
