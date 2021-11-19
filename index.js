@@ -99,10 +99,12 @@ io.sockets.on('connection', (socket) => {
          })
      });
 
-     socket.on('cpu-'+socket.id,(data) =>{
+     socket.on('cpu',(data) =>{
+      console.log("Chargement du script cpu pour "+socket.id)
       const py = spawn('python3',['cpu.py'])
       py.stdout.on('data',(data)=>{
         console.log(data.toString())
+        io.emit(data.toString())
       })
      })
   });

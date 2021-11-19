@@ -14,7 +14,7 @@
 
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/3693fa4061.js" crossorigin="anonymous"></script>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <!-- Floating labels -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/exacti/floating-labels@latest/floating-labels.min.css" media="screen">
 
@@ -74,6 +74,15 @@
          <button id="btnMicro" type="button" class="btn btn-outline-light btn-lg m-2">
             <span class="left-pan"><i class="fa fa-microphone"></i></span> Cliquez ici pour commencer la reconnaissance vocale
         </button>
+        <div id="reb" class="item html" hidden>
+           <h2 id="rebLab">0</h2>
+           <svg width="160" height="160" xmlns="http://www.w3.org/2000/svg">
+              <g>
+                <title>Layer 1</title>
+                <circle id="circle" class="circle_animation" r="69.85699" cy="81" cx="81" stroke-width="8" stroke="#6fdb6f" fill="none"/>
+              </g>
+          </svg>
+        </div>
         <div id="charSpin" class="spinner-border" style="width: 2rem; height: 2rem;" role="status" hidden>
             <span><i class="fa fa-microphone"></i></span>
         </div>
@@ -248,14 +257,43 @@ message=document.getElementById('message')
 motCle=document.getElementById('motCle');
 msgBtn=document.getElementById('msgBtn');
 btnMicro=document.getElementById("btnMicro");
+reb=document.getElementById("reb");
+
+function wait(ms)
+{
+    var d = new Date();
+    var d2 = null;
+    do { d2 = new Date(); }
+    while(d2-d < ms);
+}
+
+function setTimeout() {
+  time=0
+  i=3
+  for(i;i>time;i--){
+      wait(1000)
+      document.getElementById("rebLab").text=i;
+  }
+  if(i==time){
+    return true
+  }
+
+}
+
 socket.on('connect',function(){
     const id = socket.io.engine.id;
     console.log('Mon id : '+id)
     document.getElementById('btnMicro').addEventListener('click',function(){
-        socket.emit('python-'+socket.id,'go');
-        this.setAttribute("hidden",true)
-        spin.removeAttribute("hidden")
-        spinLabel.removeAttribute("hidden")
+          reb.removeAttribute("hidden")
+          this.setAttribute("hidden",true)
+          
+            if(setTimeout()){ 
+            socket.emit('python-'+socket.id,'go');
+            reb.setAttribute("hidden",true)
+            spin.removeAttribute("hidden")
+            spinLabel.removeAttribute("hidden")
+        }
+       
     });
     socket.on('msg-'+socket.id, function(msg) {
         console.log(msg)
@@ -267,9 +305,10 @@ socket.on('connect',function(){
         spinLabel.setAttribute("hidden",true);
     })
 })
-    </script>
 
-    <script src="/vosk/micro.py"></script>
+
+</script>
+   
 </body>
 
 </html>

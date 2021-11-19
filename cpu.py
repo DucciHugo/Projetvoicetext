@@ -8,12 +8,11 @@ def raspberry_usage():
   free_memory = round(100 - used_memory,2)
   return used_memory,free_memory,cpu_usage
 
-def send_infos():
-  while(1):
-    global start_timer
-    start_timer = time.time()
-    memory = raspberry_usage()
-    print(memory[0]+","+memory[1]+","+memory[2])
 
+info=[]
+with open('/sys/class/thermal/thermal_zone0/temp', 'r') as ftemp:
+    current_temp = int(ftemp.read()) / 1000
+    info.append(current_temp)
 
-send_infos()
+print(info)
+
