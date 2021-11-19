@@ -33,6 +33,11 @@
     
     <!-- Custom styles for this template -->
     <link href="static/styles/dashboard.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="static/img/ico.png">
+    <link rel="icon" href="static/img/ico.png">
+    
   </head>
   <body>
     
@@ -49,83 +54,62 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="Statistiques.php">
+            <a class="nav-link" href="statistiques.html">
               <span data-feather="home"></span>
-              Accueil
+              Statistiques globales
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+          
+            <a class="nav-link active" aria-current="page" href="statsraspberry.html">
               <span data-feather="book"></span>
-              Nombre de mots
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Nombre de conversations
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Nombre d'actions
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Statistiques raspberry</span>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Taux d’utilisation du CPU
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Taux d’utilisation de la RAM
+              Statistiques Raspberry
             </a>
           </li>
         </ul>
         <hr>
-        <li class="nav-item mb-1 mb-md-0 mx-1">
+       
           <a class="text-white btn btn-danger" href="index.html">
               Retour vers la page d'accueil
           </a>
       </div>
     </nav>
 
-    <main>
-                        <div class="row">
-                        <div class="col-sm-4 mb-2">
-                            <div class="card">
-                                <div class="card-body">
-                                  <p id="liste"></p>
-                                </div>
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h5>Tableau de bord</h5>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-sm-4 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>Taux d'utilisation du CPU</h5>
                             </div>
                         </div>
-    </main>
-  </div>
-</div>
+                    </div>
 
-    
+                    <div class="col-sm-4 mb-2">
+                        <div class="card">
+                            <div class="card-body">
+                            <h5>Taux d'utilisation de la RAM</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </main>
+
+        </div>
+    </div>
+
 
     <script src="static/js/bootstrap.bundle.min.js"></script>
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="static/js/dashboard.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-    <script>
-      var liste = document.getElementById('liste');
-        axios.get('http://localhost:5000/count').then(({data}) =>
-            data.forEach(function(item,i) {
-        liste.innerHTML = liste.innerHTML + "<h1>Il y'a " + data[0] + " mots</h1><br>"
-          })
-        ).catch((err) => console.log(err))
-    </script>
   </body>
 </html>
