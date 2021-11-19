@@ -17,9 +17,9 @@ const db = mysql.createPool({
 })
 
 app.use(express.static(__dirname));
-app.use(cors())
 app.use(express.json()) //For JSON requests
 app.use(express.urlencoded({extended: true}));
+app.use(cors())
 
 app.get('/statistiques',function(req,res){
   res.sendFile(path.join(__dirname+'/statistiques.html'));

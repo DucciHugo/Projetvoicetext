@@ -1,6 +1,6 @@
 /* globals Chart:false, feather:false */
 let labels = [];
-  axios.get('http://localhost:5000/week').then(({data}) =>
+  axios.get('http://192.168.31.211:5000/week').then(({data}) =>
           data.forEach(function(item,i) {
             newd =new Date(item.date).toLocaleDateString();
             labels.push(newd)
@@ -8,24 +8,18 @@ let labels = [];
         })
       
       ).catch((err) => console.log(err))
-      
-
   'use strict'
   console.log(labels)
   let data = [];
-  axios.get('http://localhost:5000/value').then((res) =>
+  axios.get('http://192.168.31.211:5000/value').then((res) =>
             res.data.forEach(function(item,i) {
             console.log(item.counted_leads)
             data.push(item.counted_leads)
-
         })
       ).catch((err) => console.log(err))
       console.log(data);
 
   feather.replace({ 'aria-hidden': 'true' })
-
-  
-
   // Graphs
   var ctx = document.getElementById('myChart')
   // eslint-disable-next-line no-unused-vars
