@@ -86,6 +86,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5>Taux d'utilisation du CPU</h5>
+                                <h6 id=""></h6>
                             </div>
                         </div>
                     </div>
@@ -138,8 +139,8 @@
      document.querySelector('html').addEventListener('mousedown',function(){
         socket.emit('cpu','go')
      })
-     socket.on('cpu',function(msg){
-          console.log(msg)
+     socket.on('cpu',function(cpu){
+          console.log(cpu)
       })
   })
 
