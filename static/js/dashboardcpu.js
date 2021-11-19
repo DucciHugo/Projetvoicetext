@@ -2,7 +2,8 @@ function cpustats(cpu){
     console.log(cpu)
     'use strict'
     let data = []
-    cpures = cpu[8][3]
+    cpures = cpu[8].slice(0,3)
+
     data.push(cpures)
 
     feather.replace({ 'aria-hidden': 'true' })
