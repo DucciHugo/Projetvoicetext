@@ -43,5 +43,5 @@ function cpustats(cpu){
           })
         
     }
-    myChart.data.push(cpures)
+    console.log(myChart)
   }
