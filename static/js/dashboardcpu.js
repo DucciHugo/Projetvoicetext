@@ -2,6 +2,7 @@ function cpustats(cpu){
     console.log(cpu)
     'use strict'
     let data = []
+    var chat
     cpures = cpu[8].slice(0,3)
 
     data.push(cpures)
@@ -11,32 +12,36 @@ function cpustats(cpu){
     // Graphs
     var ctx = document.getElementById('cpu')
     // eslint-disable-next-line no-unused-vars
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: [
-          ' ',
-        ],
-        datasets: [{
-          data,
-          lineTension: 0,
-          backgroundColor: 'transparent',
-          borderColor: '#007bff',
-          borderWidth: 4,
-          pointBackgroundColor: '#007bff'
-        }]
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: false
+    if(myChart==null){
+        myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+              labels: [
+                ' ',
+              ],
+              datasets: [{
+                data,
+                lineTension: 0,
+                backgroundColor: 'transparent',
+                borderColor: '#007bff',
+                borderWidth: 4,
+                pointBackgroundColor: '#007bff'
+              }]
+            },
+            options: {
+              scales: {
+                yAxes: [{
+                  ticks: {
+                    beginAtZero: false
+                  }
+                }]
+              },
+              legend: {
+                display: false
+              }
             }
-          }]
-        },
-        legend: {
-          display: false
-        }
-      }
-    })
+          })
+        
+    }
+    myChart.data.push(cpures)
   }
