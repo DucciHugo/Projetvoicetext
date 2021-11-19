@@ -87,7 +87,7 @@
                             <div class="card-body">
 
                                 <h5>Taux d'utilisation du CPU</h5>
-                                <canvas class="my-4 w-100" id="cpu" width="900" height="380"></canvas>
+                                <li id="cpuaff"></li>
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                       <div class="card">
                           <div class="card-body">
                           <h5>Température</h5>
-                          <canvas class="my-4 w-100" id="temp" width="900" height="380"></canvas>
+                          <li id="tempaff"></li>
 
                           </div>
                       </div>
@@ -104,8 +104,7 @@
                         <div class="card">
                             <div class="card-body">
                             <h5>Taux d'utilisation de la RAM</h5>
-                            <canvas class="my-4 w-100" id="ram" width="900" height="380"></canvas>
-
+                            <li id="ramaff"></li>
                             </div>
                         </div>
                     </div>
@@ -131,11 +130,7 @@
 
       <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script>
-      <!-- <script src="static/js/dashboard.js"></script>  -->
-      <!-- <script src="static/js/dashboardcpu.js"></script>  -->
-      <script src="static/js/dashboardtemp.js"></script> 
-      <script src="static/js/dashboardram.js"></script> 
-
+      <script src="static/js/dashboard.js"></script> 
       <script src="/socket.io/socket.io.js"></script>
       <script>
         var data = []
@@ -152,6 +147,11 @@
      })
      socket.on('cpu',function(cpu){
     console.log(cpu)
+    var cpuaff = document.getElementById('cpuaff')
+    var ramaff = document.getElementById('ramaff')
+    var tempaff = document.getElementById('tempaff')
+    cpuaff.innerHTML = cpuaff.innerHTML + "<h6>(Le taux d'utilisation du cpu est de " + cpu[8].slice(0,3) + "%)</h6>"
+
       })
   })
 
