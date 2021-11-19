@@ -2,7 +2,7 @@ function cpustats(cpu){
     console.log(cpu)
     'use strict'
     let data = []
-    var chat
+    var myChart
     cpures = cpu[8].slice(0,3)
 
     data.push(cpures)
