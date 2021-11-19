@@ -43,5 +43,5 @@ function cpustats(cpu){
           })
         
     }
-    myChart.config.data.datasets.data.push(cpures)
+    console.log(myChart.config.data.datasets.data)
   }
