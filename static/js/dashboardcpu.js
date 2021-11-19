@@ -1,9 +1,9 @@
 var data = []
+var myChart = null
 
 function cpustats(cpu){
     console.log(cpu)
     'use strict'
-    var myChart
     cpures = cpu[8].slice(0,3)
 
     data.push(cpures)
