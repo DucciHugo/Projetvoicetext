@@ -1,7 +1,10 @@
 function cpustats(cpu){
     console.log(cpu)
     'use strict'
-  
+    let data = []
+    cpures = cpu[8][3]
+    data.push(cpures)
+
     feather.replace({ 'aria-hidden': 'true' })
   
     // Graphs
@@ -11,24 +14,10 @@ function cpustats(cpu){
       type: 'line',
       data: {
         labels: [
-          'Sunday',
-          'Monday',
-          'Tuesday',
-          'Wednesday',
-          'Thursday',
-          'Friday',
-          'Saturday'
+          ' ',
         ],
         datasets: [{
-          data: [
-            15339,
-            21345,
-            18483,
-            24003,
-            23489,
-            24092,
-            12034
-          ],
+          data,
           lineTension: 0,
           backgroundColor: 'transparent',
           borderColor: '#007bff',
