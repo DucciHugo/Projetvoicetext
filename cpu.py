@@ -42,8 +42,5 @@ def disconnect():
 def on_message(data):
   print('I received a message!'+ data)
 
-
-
-if name == 'main':
-    sio.connect('http://localhost:5000')
-    sio.wait()
+sio.connect('http://localhost:5000')
+sio.disconnect
